@@ -85,8 +85,8 @@ for rc = linspace(rc_min, rc_max, nr)
         for c = 1:size(D,2)-1
             
             diff = D(:,size(D,2),i_f) - D(:, c, i_f);
-            soft = max(diff, 0);
-            v = soft/mean(soft)*median(soft);
+            s = softmax(max(diff, 0));
+            v = s*max(diff);
             
             temp = D(:,c,i_f);
             
